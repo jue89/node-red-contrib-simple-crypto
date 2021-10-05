@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    function genRandomNibble () {
+        const charCode = Math.floor(Math.random() * 16);
+        if (charCode < 10) return charCode.toString();
+        else return String.fromCharCode(charCode - 10 + 97);
+    }
+
+    function genRandomHexString (len) {
+        let str = '';
+        while (len--) str += genRandomNibble(); 
+        return str;
+    }
+
+	RED.nodes.registerType('key',{
+		category: 'config',
+		defaults: {
+            name: {value: ''},
+			sharedKey: {value: '', required: true, validate: (x) => RED.validators.regex(/^[0-9a-fA-G]{64}$/)}
+		},
+		label: function() {
+			return this.name || 'unnamed key';
+		},
+        oneditprepare: () => {
+            $('#gen-key').click(() => {
+                $('#node-config-input-sharedKey').val(genRandomHexString(64));
+            });
+        }
+	});
+</script>
+
+<script type="text/html" data-template-name="key">
+	<div class="form-row">
+		<label for="node-config-input-name"><i class="fa fa-tag"></i> Key name</label>
+		<input type="text" id="node-config-input-name">
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-sharedKey"><i class="fa fa-key"></i> Shared key</label>
+        <input type="text" id="node-config-input-sharedKey">
+	</div>
+    <button type="button" id="gen-key" class="red-ui-button">Generate new shared key</button>
+</script>

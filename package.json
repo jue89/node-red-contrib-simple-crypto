@@ -1,0 +1,23 @@
+{
+  "name": "node-red-contrib-simple-crypto",
+  "version": "1.0.0",
+  "description": "Simple crypto library for HMAC-SHA256 and AES-256-CBC",
+  "main": "index.js",
+  "keywords": [
+    "node-red",
+    "crypto",
+    "hmac",
+    "aes"
+  ],
+  "author": "Juergen Fitschen <me@jue.yt>",
+  "license": "MIT",
+  "node-red": {
+    "nodes": {
+      "key": "key.js",
+      "aes-encrypt": "aes-encrypt.js",
+      "aes-decrypt": "aes-decrypt.js",
+      "hmac-sha256-gen": "hmac-sha256-gen.js",
+      "hmac-sha256-check": "hmac-sha256-check.js"
+    }
+  }
+}
