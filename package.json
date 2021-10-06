@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-simple-crypto",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple crypto library for HMAC-SHA256 and AES-256-CBC",
   "main": "index.js",
   "keywords": [
